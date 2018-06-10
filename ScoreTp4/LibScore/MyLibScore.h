@@ -21,12 +21,12 @@ public:
 	//Puntaje*p;
 	MyLibScore();
 	void RegistrandoPuntaje(Puntaje* puntos);
-	void MostrarLista();
-	void MostrarHighscore();
-	void MostarMayorMuertes();
-	void MostrarMayorAsistencias();
-	void MostarMayorTiempoEnObjetivos();
-	void MostrarPuntajesXLevel();
+	std::vector<Puntaje*> DevolverLista();
+	std::vector<Puntaje*> Highscore();
+	std::vector<Puntaje*> MayorMuertes();
+	std::vector<Puntaje*> MayorAsistencias();
+	std::vector<Puntaje*> MayorTiempoEnObjetivos();
+	std::vector<Puntaje*> PuntajesXLevel();
 	~MyLibScore();
 	std::vector<Puntaje*>vec;
 

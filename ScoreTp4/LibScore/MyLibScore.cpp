@@ -10,11 +10,11 @@ void MyLibScore::RegistrandoPuntaje(Puntaje* puntos) {
 	//cout << "registrando puntaje" << endl;
 	vec.push_back(puntos);
 }
-void MyLibScore::MostrarLista() {
+std::vector<Puntaje*> MyLibScore::DevolverLista() {
 	//cout << p->puntos;
 	
 	
-	for (int i = 0; i < vec.size();i++) {
+	/*for (int i = 0; i < vec.size();i++) {
 		Puntaje* p = vec[i];
 		cout << p->nombre;
 		cout <<"= " <<p->puntos;
@@ -24,8 +24,10 @@ void MyLibScore::MostrarLista() {
 		cout << "tiempo en objetivos: " << p->tiempoEnObjetivos << endl;
 		cout << "asistencias " << p->asistencias << endl;
 	}
+	*/
+	return vec;
 }
-void MyLibScore::MostrarHighscore() {
+std::vector<Puntaje*> MyLibScore::Highscore() {
 	std::vector<Puntaje*>vec2=vec;
 	Puntaje* mayor;
 	for (int i = 0; i < vec2.size(); i++) {
@@ -44,19 +46,17 @@ void MyLibScore::MostrarHighscore() {
 					
 			}
 		}
-	//	for (int i3 = 0; i3 < vec2.size(); i3++) {
-		//	cout << vec2[i3]->puntos;
-		//}
-		
+			
 	}
+	return vec2;
 	
-	for (int i = 0; i < vec2.size(); i++) {
-		cout << vec2[i]->nombre;
-		cout << " " << vec2[i]->puntos;
-		cout << endl;
-	}
+	//for (int i = 0; i < vec2.size(); i++) {
+		//cout << vec2[i]->nombre;
+		//cout << " " << vec2[i]->puntos;
+		//cout << endl;
+	//}
 }
-void MyLibScore::MostarMayorMuertes() {
+std::vector<Puntaje*> MyLibScore::MayorMuertes() {
 	std::vector<Puntaje*>vec2 = vec;
 	Puntaje* mayor;
 	//cout << "tam "<<vec2.size();
@@ -74,18 +74,19 @@ void MyLibScore::MostarMayorMuertes() {
 			//	cout << "es mayor b " << endl;
 				}
 		}
-//		cout << "**************nueva lista****" << endl;
+//	MostarMayorMuertes	cout << "**************nueva lista****" << endl;
 	//	for (int i3 = 0; i3 < vec2.size(); i3++) {
 		//	cout << vec2[i3]->muertes;
 		//}
 	}
-	for (int i3 = 0; i3 < vec2.size(); i3++) {
-		cout << vec2[i3]->nombre;
-		cout << vec2[i3]->muertes;
-		cout << endl;
-	}
+	//for (int i3 = 0; i3 < vec2.size(); i3++) {
+		//cout << vec2[i3]->nombre;
+		//cout << vec2[i3]->muertes;
+		//cout << endl;
+	//}
+	return vec2;
 }
-void MyLibScore::MostrarMayorAsistencias(){
+std::vector<Puntaje*> MyLibScore::MayorAsistencias(){
 	std::vector<Puntaje*>vec2 = vec;
 	Puntaje* mayor;
 	for (int i = 0; i < vec2.size(); i++) {
@@ -99,13 +100,14 @@ void MyLibScore::MostrarMayorAsistencias(){
 			}
 		}
 	}
-	for (int i3 = 0; i3 < vec2.size(); i3++) {
-		cout << vec2[i3]->nombre;
-		cout << vec2[i3]->asistencias;
-		cout << endl;
-	}
+//	for (int i3 = 0; i3 < vec2.size(); i3++) {
+	//	cout << vec2[i3]->nombre;
+		//cout << vec2[i3]->asistencias;
+		//cout << endl;
+	//}
+	return vec2;
 }
-void MyLibScore::MostarMayorTiempoEnObjetivos(){
+std::vector<Puntaje*> MyLibScore::MayorTiempoEnObjetivos(){
 	std::vector<Puntaje*>vec2 = vec;
 	Puntaje* mayor;
 	for (int i = 0; i < vec2.size(); i++) {
@@ -119,65 +121,75 @@ void MyLibScore::MostarMayorTiempoEnObjetivos(){
 			}
 		}
 	}
-	for (int i3 = 0; i3 < vec2.size(); i3++) {
-		cout << vec2[i3]->nombre;
-		cout << vec2[i3]->tiempoEnObjetivos;
-		cout << endl;
-	}
+	//for (int i3 = 0; i3 < vec2.size(); i3++) {
+		//cout << vec2[i3]->nombre;
+		//cout << vec2[i3]->tiempoEnObjetivos;
+		//cout << endl;
+	//}
+	return vec2;
 }
-void MyLibScore::MostrarPuntajesXLevel(){
+std::vector<Puntaje*> MyLibScore::PuntajesXLevel(){
 	std::vector<Puntaje*>vec2 = vec;
-	std::vector<Puntaje*>vecLevel;
+	std::vector<Puntaje*>vecLevel1;
+	std::vector<Puntaje*>vecLevel2;
+	std::vector<Puntaje*>vecLevelTotal;
 	Puntaje* mayor;
-	cout << "level: VOLSKAVA" << endl;
+	//cout << "level: VOLSKAVA" << endl;
 	for (int i = 0; i < vec2.size(); i++) {
 		if (vec2[i]->level == Level::volskava) {
 		
-			vecLevel.push_back(vec2[i]);
+			vecLevel1.push_back(vec2[i]);
 		}
 	}
-	for (int i = 0; i < vecLevel.size(); i++) {
-		mayor = vecLevel[i];
-		for (int i2 = i; i2 < vecLevel.size(); i2++) {
-			if (mayor->puntos < vecLevel[i2]->puntos) {
+	for (int i = 0; i < vecLevel1.size(); i++) {
+		mayor = vecLevel1[i];
+		for (int i2 = i; i2 < vecLevel1.size(); i2++) {
+			if (mayor->puntos < vecLevel1[i2]->puntos) {
 				Puntaje* aux = mayor;
-				vecLevel[i] = vecLevel[i2];
-				vecLevel[i2] = aux;
-				mayor = vecLevel[i];
+				vecLevel1[i] = vecLevel1[i2];
+				vecLevel1[i2] = aux;
+				mayor = vecLevel1[i];
 			}
 		}
 	}
 
-	for (int i = 0; i < vecLevel.size(); i ++ ) {
-		cout << vecLevel[i]->nombre;
-		cout << vecLevel[i]->puntos;
-		cout << endl;
-	}
-	vecLevel.clear();
-	cout << "level: INFIERNO" << endl;
+	//for (int i = 0; i < vecLevel.size(); i ++ ) {
+		//cout << vecLevel[i]->nombre;
+		//cout << vecLevel[i]->puntos;
+		//cout << endl;
+	//}
+//	vecLevel.clear();
+//	cout << "level: INFIERNO" << endl;
 	for (int i = 0; i < vec2.size(); i++) {
 		if (vec2[i]->level == Level::infierno) {
 	
-			vecLevel.push_back(vec2[i]);
+			vecLevel2.push_back(vec2[i]);
 		}
 	}
-	for (int i = 0; i < vecLevel.size(); i++) {
-		mayor = vecLevel[i];
-		for (int i2 = i; i2 < vecLevel.size(); i2++) {
-			if (mayor->puntos < vecLevel[i2]->puntos) {
+	for (int i = 0; i < vecLevel2.size(); i++) {
+		mayor = vecLevel2[i];
+		for (int i2 = i; i2 < vecLevel2.size(); i2++) {
+			if (mayor->puntos < vecLevel2[i2]->puntos) {
 				Puntaje* aux = mayor;
-				vecLevel[i] = vecLevel[i2];
-				vecLevel[i2] = aux;
-				mayor = vecLevel[i];
+				vecLevel2[i] = vecLevel2[i2];
+				vecLevel2[i2] = aux;
+				mayor = vecLevel2[i];
 			}
 		}
 	}
-	for (int i = 0; i < vecLevel.size(); i++) {
-		cout << vecLevel[i]->nombre;
-		cout << vecLevel[i]->puntos;
-		cout << endl;
+	
+
+	for (std::vector<Puntaje*>::iterator it=vecLevel1.begin(); it!=vecLevel1.end();++it) {
+		Puntaje*p = *it;
+		vecLevelTotal.push_back(p);
+		}
+	for (std::vector<Puntaje*>::iterator it = vecLevel2.begin(); it != vecLevel2.end(); ++it) {
+		Puntaje*p = *it;
+		vecLevelTotal.push_back(p);
 	}
-	vecLevel.clear();
+	
+
+	return vecLevelTotal;
 
 
 
