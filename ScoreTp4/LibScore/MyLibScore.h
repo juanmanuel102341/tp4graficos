@@ -1,21 +1,37 @@
 #include<iostream>
 using namespace std;
-#include<list>
+//#include<list>
+#include<vector>
+#include<string>
+enum Level {
+	infierno, volskava
+};
+struct Puntaje
+{
+	string nombre;
+	int puntos,muertes,tiempoEnObjetivos,asistencias;
+	Level level;
+	};
+ 
 
 class MyLibScore
 {
 public:
-	struct Puntaje
-	{
-		string nombre;
-		int puntos;
-	};
+	
+	//Puntaje*p;
 	MyLibScore();
-	void RegistrandoPuntaje(Puntaje puntos);
+	void RegistrandoPuntaje(Puntaje* puntos);
+	void MostrarLista();
+	void MostrarHighscore();
+	void MostarMayorMuertes();
+	void MostrarMayorAsistencias();
+	void MostarMayorTiempoEnObjetivos();
+	void MostrarPuntajesXLevel();
 	~MyLibScore();
-	list<Puntaje>lista;
+	std::vector<Puntaje*>vec;
 
 private:
+	
 
 };
 
