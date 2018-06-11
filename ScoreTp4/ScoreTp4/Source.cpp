@@ -13,6 +13,8 @@ void MostarListaBase(std::vector<Puntaje*>p) {
 
 }
 void MostarPuntos(std::vector<Puntaje*>p) {
+	cout << "**********************highscore**********************"<<endl;
+	
 	for (int i = 0; i < p.size(); i++) {
 		cout << p[i]->nombre;
 		cout << p[i]->puntos;
@@ -21,6 +23,7 @@ void MostarPuntos(std::vector<Puntaje*>p) {
 
 }
 void MostarMayorMuertes(std::vector<Puntaje*>p) {
+	cout << "**********************mayor puntos**********************"<<endl;
 	for (int i = 0; i < p.size(); i++) {
 		cout << p[i]->nombre;
 		cout << p[i]->muertes;
@@ -29,6 +32,7 @@ void MostarMayorMuertes(std::vector<Puntaje*>p) {
 
 }
 void MostarMayorAsistencia(std::vector<Puntaje*>p) {
+	cout << "**********************mayor asistencia**********************"<<endl;
 	for (int i = 0; i < p.size(); i++) {
 		cout << p[i]->nombre;
 		cout << p[i]->asistencias;
@@ -37,6 +41,7 @@ void MostarMayorAsistencia(std::vector<Puntaje*>p) {
 
 }
 void MostarMayorTiempoObjetivo(std::vector<Puntaje*>p) {
+	cout << "**********************mayor tiempo objetivos**********************"<<endl;
 	for (int i = 0; i < p.size(); i++) {
 		cout << p[i]->nombre;
 		cout << p[i]->tiempoEnObjetivos;
@@ -45,6 +50,7 @@ void MostarMayorTiempoObjetivo(std::vector<Puntaje*>p) {
 
 }
 void MostarPuntajePorLevel(std::vector<Puntaje*>p) {
+	cout << "**********************puntaje por level**********************"<<endl;
 	for (int i = 0; i < p.size(); i++) {
 		cout << p[i]->nombre;
 		cout << p[i]->puntos;
@@ -109,20 +115,19 @@ int main() {
 	p5->level = Level::volskava;
 	myLibScore.RegistrandoPuntaje(p5);
 	
-	std::vector<Puntaje*>vecBase=myLibScore.DevolverLista();
-	//std::vector<Puntaje*>vec=myLibScore.Highscore();
+	//std::vector<Puntaje*>vecBase=myLibScore.DevolverLista();
+	std::vector<Puntaje*>vec=myLibScore.Highscore();
+	std::vector<Puntaje*>vec2=myLibScore.MayorMuertes();
+	std::vector<Puntaje*>vec3=myLibScore.MayorAsistencias();
+	std::vector<Puntaje*>vec4=myLibScore.MayorTiempoEnObjetivos();
+	std::vector<Puntaje*>vec5= myLibScore.PuntajesXLevel();
 	
-	//std::vector<Puntaje*>vec2=mMostrarListayLibScore.MayorMuertes();
-	//std::vector<Puntaje*>vec3=myLibScore.MayorAsistencias();
-	//std::vector<Puntaje*>vec4=myLibScore.MayorTiempoEnObjetivos();
-	//std::vector<Puntaje*>vec5= myLibScore.PuntajesXLevel();
-	
-	MostarListaBase(vecBase);
-	//MostarPuntos(vec);
-	//	MostarMayorMuertes(vec2);
-	//MostarMayorAsistencia(vec3);
-	//MostarMayorTiempoObjetivo(vec4);
-	//MostarPuntajePorLevel(vec5);
+	//MostarListaBase(vecBase);
+	MostarPuntos(vec);
+	MostarMayorMuertes(vec2);
+	MostarMayorAsistencia(vec3);
+	MostarMayorTiempoObjetivo(vec4);
+	MostarPuntajePorLevel(vec5);
 	delete p;
 	cin.get();
 }
